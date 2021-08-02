@@ -1,2 +1,2 @@
 # lou-springboot
-实验楼课程1
+Spring Boot 入门级前后端分离项目
