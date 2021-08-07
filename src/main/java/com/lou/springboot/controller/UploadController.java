@@ -1,5 +1,8 @@
 package com.lou.springboot.controller;
 
+import com.lou.springboot.common.Constants;
+import com.lou.springboot.common.Result;
+import com.lou.springboot.common.ResultGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,16 +16,14 @@ import java.util.Date;
 import java.util.Random;
 
 @Controller
+@RequestMapping("/images")
 public class UploadController {
-
-    //private final static String FILE_UPLOAD_PATH = "D:\\upload\\";
-    private final static String FILE_UPLOAD_PATH = "/home/project/upload/";
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile file) {
+    public Result upload(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
-            return "上传失败";
+            return ResultGenerator.genFailResult("请选择文件");
         }
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
@@ -35,12 +36,14 @@ public class UploadController {
         try {
             // 保存文件
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(FILE_UPLOAD_PATH + newFileName);
+            Path path = Paths.get(Constants.FILE_UPLOAD_PATH + newFileName);
             Files.write(path, bytes);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "上传成功，图片地址为：/files/" + newFileName;
+        Result result = ResultGenerator.genSuccessResult();
+        result.setData("files/" + newFileName);
+        return result;
     }
 }

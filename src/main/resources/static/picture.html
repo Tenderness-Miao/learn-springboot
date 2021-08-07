@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>lou.springboot | 用户管理页</title>
+    <title>lou.springboot | 图片管理页</title>
     <!-- jqgrid ui -->
     <link href="plugins/jqgrid-5.3.0/ui.jqgrid-bootstrap4.css" rel="stylesheet"/>
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
@@ -38,11 +38,11 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="https://github.com/ZHENFENG13">
+                <a class="nav-link" data-toggle="dropdown" href="https://github.com/ZHENFENG13/ssm-cluster/wiki">
                     <i class="fa fa-home">&nbsp;&nbsp;文档</i>
                 </a>
                 <div class="dropdown-menu dropdown-donate-lg dropdown-menu-right">
-                    <a href="##" class="dropdown-item">实验楼训练营</a>
+                    <a href="##" class="dropdown-item">实验楼训练营m</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -70,6 +70,7 @@
         </ul>
     </nav>
     <!-- /.navbar -->
+
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -106,24 +107,10 @@
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link active">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>lou.springboot主页</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>adminLTE v3</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-header">管理模块</li>
                     <li class="nav-item">
-                        <a href="picture.html" class="nav-link">
+                        <a href="picture.html" class="nav-link active">
                             <i class="nav-icon fa fa-image"></i>
                             <p>
                                 图片管理
@@ -131,7 +118,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="user.html" class="nav-link active">
+                        <a href="user.html" class="nav-link">
                             <i class="fa fa-user-circle nav-icon"></i>
                             <p>用户管理</p>
                         </a>
@@ -150,12 +137,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">用户管理页</h1>
+                        <h1 class="m-0 text-dark">图片管理页</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="index.html">主页</a></li>
-                            <li class="breadcrumb-item active">用户管理页</li>
+                            <li class="breadcrumb-item active">图片管理页</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -169,14 +156,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="grid-btn">
-                                <button class="btn btn-info" onclick="userAdd()"><i
-                                        class="fa fa-plus"></i>&nbsp;新增
+                                <button class="btn btn-info" onclick="pictureAdd()"><i
+                                        class="fa fa-plus"></i>&nbsp;添加
                                 </button>
-                                <button class="btn btn-warning" onclick="userEdit()"><i
-                                        class="fa fa-edit"></i>&nbsp;编辑
+                                <button class="btn btn-info" onclick="pictureEdit()"><i
+                                        class="fa fa-pencil-square-o"></i>&nbsp;修改
                                 </button>
-                                <button class="btn btn-danger" onclick="userDel()"><i
-                                        class="fa fa-remove"></i>&nbsp;删除
+                                <button class="btn btn-danger" onclick="deletePicture()"><i
+                                        class="fa fa-trash-o"></i>&nbsp;删除
                                 </button>
                             </div>
                             <table id="jqGrid" class="table table-bordered">
@@ -187,75 +174,52 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="content">
-        <!-- 模态框（Modal） -->
-        <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h6 class="modal-title" id="modalAddTitle">用户添加</h6>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="alert alert-danger add-error-info">错误信息展示栏。</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="userName" class="control-label">用户名:</label>
-                                <input type="text" class="form-control" id="userName" autocomplete="off" >
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="control-label">密码:</label>
-                                <input type="text" class="form-control" id="password">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" id="saveButton">确认</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.modal -->
-    </div>
-
-    <div class="content">
-        <!-- 模态框（Modal） -->
-        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h6 class="modal-title" id="modalEditTitle">密码编辑</h6>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <input type="hidden" id="userId" value="0">
-                            <div class="form-group">
-                                <div class="alert alert-danger edit-error-info">错误信息展示栏。</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordEdit" class="control-label">新密码:</label>
-                                <input type="text" class="form-control" id="passwordEdit">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" id="editButton">确认</button>
+        <!-- /.content -->
+        <div class="content">
+            <!-- 模态框（Modal） -->
+            <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="pictureModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h6 class="modal-title" id="pictureModalLabel">图片编辑</h6>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <div class="alert alert-danger">错误信息展示栏。</div>
+                                </div>
+                                <input type="hidden" id="pictureId" value="0">
+                                <input type="hidden" id="picturePath" value="">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <img id="img" src="dist/img/logo.jpg">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <a class="btn btn-info" id="upload"><i
+                                                class="fa fa-picture-o"></i>&nbsp;上传文件</a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pictureRemark" class="control-label">备注:</label>
+                                    <input type="text" class="form-control" id="pictureRemark">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="saveButton">确认</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- /.modal -->
         </div>
-        <!-- /.modal -->
     </div>
-
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; 2019 <a href="##">13blog.site</a>.</strong>
@@ -277,14 +241,17 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
-<!-- sweet alert -->
-<script src="plugins/sweetalert/sweetalert.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- sweet alert -->
+<script src="plugins/sweetalert/sweetalert.min.js"></script>
 <script src="plugins/jqgrid-5.3.0/grid.locale-cn.js"></script>
 <script src="plugins/jqgrid-5.3.0/jquery.jqGrid.min.js"></script>
-<script src="dist/js/public.js"></script>
-<script src="dist/js/user.js"></script>
+<!-- ajax upload -->
+<script src="plugins/ajaxupload/ajaxupload.js"></script>
+<script src="/dist/js/public.js"></script>
+<script src="/dist/js/picture.js"></script>
+<!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 </body>
 </html>

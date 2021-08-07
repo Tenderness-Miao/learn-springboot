@@ -1,5 +1,6 @@
 package com.lou.springboot.config;
 
+import com.lou.springboot.common.Constants;
 import com.lou.springboot.config.handler.TokenToUserMethodArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,6 @@ public class SpringBootWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //registry.addResourceHandler("/files/**").addResourceLocations("file:D:\\upload\\");
-        registry.addResourceHandler("/files/**").addResourceLocations("file:/home/project/upload/");
+        registry.addResourceHandler("/files/**").addResourceLocations("file:"+Constants.FILE_UPLOAD_PATH);
     }
 }

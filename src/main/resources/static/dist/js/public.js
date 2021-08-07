@@ -182,7 +182,9 @@ function getSelectedRow() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
     if (!rowKey) {
-        alert("请选择一条记录");
+        swal("请选择一条记录", {
+            icon: "error",
+        });
         return;
     }
     var selectedIDs = grid.getGridParam("selarrrow");
